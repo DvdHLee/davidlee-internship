@@ -115,7 +115,7 @@ const ExploreItems = () => {
   }, []);
 
   useEffect(() => {
-    if (loadMoreIndex !== 8 && loadMoreIndex >= exploreItems.length) {
+    if (loadMoreIndex <= 8 && loadMoreIndex >= exploreItems.length) {
       const loadmore = document.getElementById("loadmore");
       loadmore.style.display = "none";
     }
