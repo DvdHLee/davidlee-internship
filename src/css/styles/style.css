@@ -13670,6 +13670,7 @@ a.read_more i {
   position: relative;
   height: 350px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .nft__item_wrap a {
