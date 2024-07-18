@@ -38,9 +38,8 @@ const ExploreItems = () => {
   for (let i = 0; i < 8; i++) {
     skeletonExploreItems.push(
       <div
-        className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
         key={i}
-        style={{ padding: 0 }}
       >
         <div className="nft__item">
           <div className="author_list_pp">
@@ -116,7 +115,7 @@ const ExploreItems = () => {
   }, []);
 
   useEffect(() => {
-    if (loadMoreIndex != 8 && loadMoreIndex >= exploreItems.length) {
+    if (loadMoreIndex !== 8 && loadMoreIndex >= exploreItems.length) {
       const loadmore = document.getElementById("loadmore");
       loadmore.style.display = "none";
     }
@@ -132,7 +131,7 @@ const ExploreItems = () => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-      {exploreItems.slice(0,loadMoreIndex)}
+      {isLoading ? skeletonExploreItems : exploreItems.slice(0,loadMoreIndex)}
       <div className="col-md-12 text-center">
         <button to="" id="loadmore" className="btn-main lead" onClick={() => setLoadMoreIndex(loadMoreIndex + 4)}>
           Load more
