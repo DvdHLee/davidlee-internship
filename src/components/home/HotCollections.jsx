@@ -10,7 +10,6 @@ import "../../css/styles/owl.transitions.css";
 const HotCollections = () => {
   const [hotCollectionsData, setHotCollectionsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [carousel, setCarousel] = useState([]);
 
   var carouselsettings = {
     className: "owl-theme",
@@ -92,8 +91,8 @@ const HotCollections = () => {
   }
 
   const hotCollections = [];
-  hotCollectionsData.map((element) =>
-    hotCollections.push(
+  hotCollectionsData.map((element) => {
+    return hotCollections.push(
       <div
         className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
         key={element.id}
@@ -124,21 +123,13 @@ const HotCollections = () => {
           </div>
         </div>
       </div>
-    )
-  );
+    );
+  });
 
   useEffect(() => {
-    setCarousel(
-      <OwlCarousel {...carouselsettings}>{skeletonHotCollections}</OwlCarousel>
-    );
     fetchHotCollectionsData();
   }, []);
-
-  useEffect(() => {
-    setCarousel(
-      <OwlCarousel {...carouselsettings}>{hotCollections}</OwlCarousel>
-    );
-  }, [isLoading, hotCollectionsData]);
+  
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -150,7 +141,9 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          {carousel}
+          <OwlCarousel {...carouselsettings}>
+            {isLoading ? skeletonHotCollections : hotCollections}
+          </OwlCarousel>
         </div>
       </div>
     </section>
