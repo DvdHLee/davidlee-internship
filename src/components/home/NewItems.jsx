@@ -50,11 +50,7 @@ const NewItems = () => {
   var skeletonNewItems = [];
   for (let i = 0; i < 4; i++) {
     skeletonNewItems.push(
-      <div
-        className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-        key={i}
-        style={{ padding: 0 }}
-      >
+      <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={i}>
         <div className="nft__item">
           <div className="author_list_pp">
             <Link
@@ -128,6 +124,8 @@ const NewItems = () => {
     fetchNewItemsData();
   }, []);
 
+  console.log(isLoading);
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -138,7 +136,11 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <OwlCarousel {...carouselsettings}>{isLoading ? skeletonNewItems : newItems}</OwlCarousel>
+          {isLoading ? (
+            skeletonNewItems
+          ) : (
+            <OwlCarousel {...carouselsettings}>{newItems}</OwlCarousel>
+          )}
         </div>
       </div>
     </section>
