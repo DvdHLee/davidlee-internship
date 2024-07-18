@@ -50,9 +50,8 @@ const HotCollections = () => {
   for (let i = 0; i < 4; i++) {
     skeletonHotCollections.push(
       <div
-        className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+        className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
         key={i}
-        style={{ padding: 0 }}
       >
         <div className="nft_coll">
           <div className="nft_wrap" style={{ height: "100%" }}>
@@ -129,7 +128,6 @@ const HotCollections = () => {
   useEffect(() => {
     fetchHotCollectionsData();
   }, []);
-  
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -141,9 +139,11 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <OwlCarousel {...carouselsettings}>
-            {isLoading ? skeletonHotCollections : hotCollections}
-          </OwlCarousel>
+          {isLoading ? (
+            skeletonHotCollections
+          ) : (
+            <OwlCarousel {...carouselsettings}>{hotCollections}</OwlCarousel>
+          )}
         </div>
       </div>
     </section>
