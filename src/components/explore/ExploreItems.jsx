@@ -7,6 +7,7 @@ import NFTCard from "../home/NFTCard";
 const ExploreItems = () => {
   const [exploreItemsData, setExploreItemsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadMoreIndex, setLoadMoreIndex] = useState(8);
 
   const fetchExploreItemsData = async () => {
     try {
@@ -20,8 +21,21 @@ const ExploreItems = () => {
     }
   };
 
+  const changedFilter = async (event) => {
+    setIsLoading(true);
+    try {
+      const endpoint =
+        "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=" + event.target.value;
+      const response = await axios.get(endpoint);
+      setExploreItemsData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   var skeletonExploreItems = [];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 8; i++) {
     skeletonExploreItems.push(
       <div
         className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
@@ -94,28 +108,35 @@ const ExploreItems = () => {
 
   const exploreItems = [];
   exploreItemsData.map((data, index) => {
-    return exploreItems.push(<NFTCard key={index} data={data}></NFTCard>);
+    return exploreItems.push(<div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}><NFTCard key={index} data={data}></NFTCard></div>);
   });
 
   useEffect(() => {
     fetchExploreItemsData();
   }, []);
 
+  useEffect(() => {
+    if (loadMoreIndex != 8 && loadMoreIndex >= exploreItems.length) {
+      const loadmore = document.getElementById("loadmore");
+      loadmore.style.display = "none";
+    }
+  }, [loadMoreIndex]);
+
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="">
+        <select id="filter-items" defaultValue="" onChange={changedFilter}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-      {exploreItems}
+      {exploreItems.slice(0,loadMoreIndex)}
       <div className="col-md-12 text-center">
-        <Link to="" id="loadmore" className="btn-main lead">
+        <button to="" id="loadmore" className="btn-main lead" onClick={() => setLoadMoreIndex(loadMoreIndex + 4)}>
           Load more
-        </Link>
+        </button>
       </div>
     </>
   );
