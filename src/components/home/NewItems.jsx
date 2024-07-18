@@ -121,7 +121,7 @@ const NewItems = () => {
 
   const newItems = [];
   newItemsData.map((data, index) => {
-    return newItems.push(<NFTCard data={data}></NFTCard>);
+    return newItems.push(<NFTCard key={index} data={data}></NFTCard>);
   });
 
   useEffect(() => {
