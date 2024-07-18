@@ -138,7 +138,7 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <OwlCarousel {...carouselsettings}>{newItems}</OwlCarousel>
+          <OwlCarousel {...carouselsettings}>{isLoading ? skeletonNewItems : newItems}</OwlCarousel>
         </div>
       </div>
     </section>
