@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function NFTCard({ data }) {
   const [expiry, setExpiry] = useState([]);
@@ -31,6 +31,10 @@ function NFTCard({ data }) {
       );
     }
   }
+
+  useEffect(() => {
+    updateTimers();
+  }, []);
 
   setInterval(() => {
     updateTimers();
