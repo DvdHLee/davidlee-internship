@@ -10,7 +10,7 @@ const ItemDetails = () => {
   }, []);
 
   return (
-    <div id="wrapper">
+    <div id="wrapper" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="300" data-aos-once='true'>
       <div className="no-bottom no-top" id="content">
         <div id="top"></div>
         <section aria-label="section" className="mt90 sm-mt-0">
