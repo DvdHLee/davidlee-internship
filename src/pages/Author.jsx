@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -23,7 +22,7 @@ const Author = () => {
       console.error(error.message);
     }
   };
-  
+
 
   const skeletonAuthor = (
     <section aria-label="section">
