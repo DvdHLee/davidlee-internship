@@ -13,8 +13,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
+<<<<<<< HEAD
+        <Route path="/author/:authorId" element={<Author />} />
+        <Route path="/item-details/:nftId" element={<ItemDetails />} />
+=======
         <Route path="/author" element={<Author />} />
         <Route path="/item-details" element={<ItemDetails />} />
+>>>>>>> 0e8bb57c313a3d52d154888f78188aa414248118
       </Routes>
       <Footer />
     </Router>
