@@ -33,6 +33,7 @@ const HotCollections = () => {
     },
     key: 1,
   };
+  
 
   const fetchHotCollectionsData = async () => {
     try {
