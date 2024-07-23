@@ -34,7 +34,6 @@ const NewItems = () => {
     },
     key: 1,
   };
-  
 
   const fetchNewItemsData = async () => {
     try {
