@@ -12,7 +12,6 @@ const TopSellers = () => {
       const endpoint =
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers";
       const response = await axios.get(endpoint);
-      console.log(response.data);
       setTopSellersData(response.data);
       setIsLoading(false);
     } catch (error) {
