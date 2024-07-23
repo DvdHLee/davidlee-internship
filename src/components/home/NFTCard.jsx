@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function NFTCard({ data, author }) {
+function NFTCard({ data }) {
   const [expiry, setExpiry] = useState([]);
 
   function updateTimers() {
     const secondsremaining = Math.floor((data.expiryDate - Date.now()) / 1000);
-    if (data.expiryDate === null || data.expiryDate === undefined) {
+    if (data.expiryDate === null) {
       setExpiry(null);
     } else if (data.expiryDate < 0) {
       setExpiry(<div className="de_countdown">Expired</div>);
@@ -48,12 +48,12 @@ function NFTCard({ data, author }) {
       <div className="nft__item">
         <div className="author_list_pp">
           <Link
-            to={data.authorId ? `/author/${data.authorId}` : `/author/${author[0]}`}
+            to={`/author/${data.authorId}`}
             data-bs-toggle="tooltip"
             data-bs-placement="top"
             title="Creator: Monica Lucas"
           >
-            <img className="lazy" src={data.authorImage ? data.authorImage : author[1]} alt="" />
+            <img className="lazy" src={data.authorImage} alt="" />
             <i className="fa fa-check"></i>
           </Link>
         </div>
