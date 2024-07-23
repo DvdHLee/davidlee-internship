@@ -31,6 +31,7 @@ function NFTCard({ data, author }) {
       );
     }
   }
+  
 
   useEffect(() => {
     updateTimers();
