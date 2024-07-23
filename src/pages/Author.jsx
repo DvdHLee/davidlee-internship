@@ -11,6 +11,10 @@ const Author = () => {
   const { authorId } = useParams();
   const [follow, setFollow] = useState(0);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const fetchAuthorData = async () => {
     try {
       const endpoint =
