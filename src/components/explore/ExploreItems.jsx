@@ -122,7 +122,7 @@ const ExploreItems = () => {
   }, [loadMoreIndex]);
 
   return (
-    <>
+    <div data-aos="fade-in" data-aos-duration="1000" data-aos-delay="300" data-aos-once='true'>
       <div>
         <select id="filter-items" defaultValue="" onChange={changedFilter}>
           <option value="">Default</option>
@@ -137,7 +137,7 @@ const ExploreItems = () => {
           Load more
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
