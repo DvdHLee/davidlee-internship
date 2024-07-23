@@ -23,6 +23,7 @@ const Author = () => {
       console.error(error.message);
     }
   };
+  
 
   const skeletonAuthor = (
     <section aria-label="section">
